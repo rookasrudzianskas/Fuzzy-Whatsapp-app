@@ -3,8 +3,18 @@ import "./styles/Sidebar.css";
 
 const Sidebar = () => {
     return (
-        <div>
-            <h1>This is sidebar</h1>
+        <div className="sidebar">
+            <div className="sidebar__header">
+
+            </div>
+
+            <div className="sidebar__search">
+
+            </div>
+
+            <div className="sidebar__chats">
+
+            </div>
         </div>
     );
 };
