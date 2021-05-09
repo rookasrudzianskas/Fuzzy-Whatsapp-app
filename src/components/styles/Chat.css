@@ -70,3 +70,26 @@ o be able to do anything it wants, in this case, take all the space*/
     overflow: scroll;
 }
 
+.chat__footer > form {
+    flex: 1;
+    display: flex;
+    outline: none;
+}
+
+.chat__footer > form > input {
+    flex: 1;
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.chat__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+
+

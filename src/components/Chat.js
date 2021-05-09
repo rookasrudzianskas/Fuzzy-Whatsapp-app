@@ -51,13 +51,15 @@ const Chat = () => {
             </div>
 
             <div className="chat__footer">
+
                 <InsertEmoticon />
                 {/* we want to have the enter functionality*/}
                 <form action="">
-                    <input type="text" placeholder="Send the message 🚀"/>
+                    <input type="text" placeholder="Type a message 🚀"/>
                     <button>Send a message</button>
                 </form>
                 <MicIcon />
+
             </div>
         </div>
     );
