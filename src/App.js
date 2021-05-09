@@ -7,11 +7,30 @@ function App() {
   return (
     <div className="app">
       <div className="app__body">
-          <Sidebar />
+          {/* then the router starts, we start looking for the url things from here*/}
+          <Router>
+            <Switch>
+                {/* in the app will be shown all the data*/}
+                <Route path="/app">
 
-      {/*    Sidebar  */}
-          <Chat />
-      {/*    Chat */}
+                    <Sidebar />
+                    {/*    Sidebar  */}
+
+                    <Chat />
+                    {/*    Chat */}
+
+                </Route>
+
+                {/* the router home path, and in here the login is going to happen*/}
+                <Route path="/">
+                    <h1>Hello Screen</h1>
+                </Route>
+
+            </Switch>
+
+
+          </Router>
+
       </div>
     </div>
   );
