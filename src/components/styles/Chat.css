@@ -45,7 +45,7 @@ o be able to do anything it wants, in this case, take all the space*/
 
 .chat__name {
     position: absolute;
-    top: 0px;
+    top: -15px;
     font-weight: 800;
     font-size: xx-small;
 }
