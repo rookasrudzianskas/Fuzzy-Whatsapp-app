@@ -84,12 +84,21 @@ o be able to do anything it wants, in this case, take all the space*/
     outline: none;
 }
 
+.chat__footer > form > button {
+    display: none;
+}
+
 .chat__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 62px;
     border-top: 1px solid lightgray;
+}
+
+.chat__footer > .MuiSvgIcon-root {
+    padding: 10px;
+    color: gray;
 }
 
 
