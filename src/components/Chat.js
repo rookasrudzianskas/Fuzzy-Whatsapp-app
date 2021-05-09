@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "./styles/Chat.css";
 import {Avatar, IconButton} from "@material-ui/core";
-import {AttachFile, MoreVert, SearchOutlined} from "@material-ui/icons";
+import SearchOutlined from '@material-ui/icons/Search';
+import AttachFile from '@material-ui/icons/AttachFile';
+import MoreVert from '@material-ui/icons/MoreVert';
+import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
+import MicIcon from '@material-ui/icons/Mic';
 
 const Chat = () => {
     // we store the avatar here
@@ -47,7 +51,13 @@ const Chat = () => {
             </div>
 
             <div className="chat__footer">
-
+                <InsertEmoticon />
+                {/* we want to have the enter functionality*/}
+                <form action="">
+                    <input type="text" placeholder="Send the message 🚀"/>
+                    <button>Send a message</button>
+                </form>
+                <MicIcon />
             </div>
         </div>
     );
