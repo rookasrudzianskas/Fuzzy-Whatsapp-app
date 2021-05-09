@@ -1,3 +1,32 @@
 .chat {
     flex: 0.65;
 }
+
+/* this one is general for all the items inside the header*/
+.chat__header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+/* and this is specially for the icon and text, and with flex 1 we make him t
+o be able to do anything it wants, in this case, take all the space*/
+.chat__headerInfo {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.chat__headerInfo > h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.chat__headerInfo > p {
+    color: gray;
+}
+
+.chat__headerRight {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
