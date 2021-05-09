@@ -27,6 +27,29 @@ o be able to do anything it wants, in this case, take all the space*/
     color: gray;
 }
 
+.chat__message {
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    /* we do not care of how much text is here, it takes as much place as the text goes on here*/
+    width: fit-content;
+    margin-bottom: 30px;
+}
+
+.chat__timestamp {
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+.chat__name {
+    position: absolute;
+    top: 0px;
+    font-weight: 800;
+    font-size: xx-small;
+}
+
 .chat__headerRight {
     display: flex;
     justify-content: space-between;
@@ -36,5 +59,9 @@ o be able to do anything it wants, in this case, take all the space*/
 .chat__body {
     flex: 1;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
-
+    background-repeat: repeat;
+    background-position: center;
+    padding: 30px;
+    overflow: scroll;
 }
+
