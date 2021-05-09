@@ -55,7 +55,7 @@ const Sidebar = () => {
                 <SidebarChat addNewChat/>
                 {/* this goes per each object in the rooms array of objects, and outputs it as the components to the Sidebar Chat, which forms*/}
                 {/* the message*/}
-                {rooms.map(room => (
+                {rooms?.map(room => (
                     // the key for performance, id and the name in the objext by that id, and the name, we have added
                     <SidebarChat key={room.id} id={room.id} name={room.data.name}/>
                 ))}
