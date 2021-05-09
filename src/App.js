@@ -10,11 +10,14 @@ function App() {
           {/* then the router starts, we start looking for the url things from here*/}
           <Router>
             <Switch>
-                {/* in the app will be shown all the data*/}
-                <Route path="/app">
 
-                    <Sidebar />
-                    {/*    Sidebar  */}
+                <Sidebar />
+                {/*    Sidebar  */}
+
+                {/* in the app will be shown all the data*/}
+                {/*: is the wildcard, it does not matter what is entered here*/}
+                {/* it could be anything*/}
+                <Route path="/rooms/:roomId">
 
                     <Chat />
                     {/*    Chat */}
@@ -23,7 +26,10 @@ function App() {
 
                 {/* the router home path, and in here the login is going to happen*/}
                 <Route path="/">
-                    <h1>Hello Screen</h1>
+
+                    <Chat />
+                    {/*    Chat */}
+
                 </Route>
 
             </Switch>
