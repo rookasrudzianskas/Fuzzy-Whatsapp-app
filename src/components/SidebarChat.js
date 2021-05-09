@@ -7,7 +7,7 @@ const SidebarChat = () => {
     const [seed, setSeed] = useState('');
 
     useEffect(() => {
-        // just genearate the random number and store in the state
+        // just generate the random number and store in the state
         // we are making the random number for every user, and then we pass it as the seed to generate the aavatar
         setSeed(Math.floor(Math.random() * 5000))
     }, []);
