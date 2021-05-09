@@ -18,7 +18,7 @@ const Sidebar = () => {
     //     we run just once to attach the firebase listener
     //    we go to the collection rooms, and take the picture of the snapshot, take the all data of rooms
     //    and also on all changes take the snapshot and update the data, it is all the data which is inside
-        db.collection("rooms").onSnapshot(snapshot => (
+       const unsubscribe = db.collection("rooms").onSnapshot(snapshot => (
             // so this sets the ROom state, to the docs object, with the id and the name as the array of the objects
             // so it goes per all the id's and takes the objects, in this case, it has just the id and the name
             // and adds the objects to the state of rooms
@@ -31,6 +31,11 @@ const Sidebar = () => {
                 })
             ))
         ));
+       // we always detach the listener, then we finished using it, and then attach the new one, to make the performance better,
+        // to not to keep the old one
+       return () => {
+           unsubscribe()
+       }
     }, []);
 
     return (
