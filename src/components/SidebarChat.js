@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./styles/SidebarChat.css";
 import {Avatar} from "@material-ui/core";
 
-const SidebarChat = () => {
+const SidebarChat = ({ addNewChat }) => {
     // we store the avatar here
     const [seed, setSeed] = useState('');
 
@@ -12,7 +12,20 @@ const SidebarChat = () => {
         setSeed(Math.floor(Math.random() * 5000))
     }, []);
 
-    return (
+    //if we go to the addNewChat statement this shows the pop up to say the chat name
+    const createChat = () => {
+        // prompt to enter the chat name!
+        const roomName = prompt("Please enter name for chat");
+        // if we have the chat name, so we do some clever stuff there
+        if (roomName) {
+            // do some important things here!
+        }
+    };
+    // so if we pass the addNewChat prop to the component we go redirected and render the second statement
+    // which is createChat function and AddnewChat label
+    // if we do not pass the add newChat prop, it goes smooth, as It should with avatars and son on
+    return !addNewChat ? (
+        // if we do not have addNewChat
         <div className="sidebarChat">
             {/* this is the avatar URL to generate it and show it in the icon*/}
             <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
@@ -20,6 +33,11 @@ const SidebarChat = () => {
                 <h2>Room name</h2>
                 <p>Last message....</p>
             </div>
+        </div>
+    ) : (
+        // if we have the addNewChat prop, so this renders
+        <div onClick={createChat} className="sidebarChat">
+            <h2>Add new Chat</h2>
         </div>
     );
 };
