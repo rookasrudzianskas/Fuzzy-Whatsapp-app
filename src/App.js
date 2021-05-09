@@ -9,10 +9,11 @@ function App() {
       <div className="app__body">
           {/* then the router starts, we start looking for the url things from here*/}
           <Router>
-            <Switch>
 
-                <Sidebar />
-                {/*    Sidebar  */}
+              <Sidebar />
+              {/*    Sidebar  */}
+
+            <Switch>
 
                 {/* in the app will be shown all the data*/}
                 {/*: is the wildcard, it does not matter what is entered here*/}
