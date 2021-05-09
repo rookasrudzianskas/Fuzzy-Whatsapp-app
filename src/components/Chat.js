@@ -36,7 +36,8 @@ const Chat = () => {
             </div>
 
             <div className="chat__body">
-                <p className="chat__message">
+                {/* if something is true, so add the chatreceiiver class*/}
+                <p className={`chat__message ${true && 'chat__receiver'}`}>
                     <span className="chat__name">Rookas Rudzianskas</span>
                     Hey guys
                     <span className="chat__timestamp">3.45PM</span>
