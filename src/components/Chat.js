@@ -10,6 +10,8 @@ import MicIcon from '@material-ui/icons/Mic';
 const Chat = () => {
     // we store the avatar here
     const [seed, setSeed] = useState('');
+    const [input, setInput] = useState('');
+    // console.log(input)
 
     useEffect(() => {
 
@@ -20,6 +22,10 @@ const Chat = () => {
         setSeed(Math.floor(Math.random() * 5000))
     //    after that we set the seed to that number, and it gets the array of the random generated numbers
     }, []);
+    // send message function
+    const sendMessage = (e) => {
+
+    }
 
     return (
         <div className="chat">
@@ -55,8 +61,10 @@ const Chat = () => {
                 <InsertEmoticon />
                 {/* we want to have the enter functionality*/}
                 <form action="">
-                    <input type="text" placeholder="Type a message 🚀"/>
-                    <button>Send a message</button>
+                    {/* we got and then somebody types something, we set the value to the state with setInput and the value of the */}
+                    {/* input becomes the input in the state, so the array*/}
+                    <input value={input} onChange={e => setInput(e.target.value)} type="text" placeholder="Type a message 🚀"/>
+                    <button type="submit" onClick={sendMessage}>Send a message</button>
                 </form>
                 <MicIcon />
 
