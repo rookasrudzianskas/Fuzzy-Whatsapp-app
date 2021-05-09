@@ -24,7 +24,9 @@ const Chat = () => {
     }, []);
     // send message function
     const sendMessage = (e) => {
-
+        e.preventDefault();
+        console.log('You typed', input)
+        setInput('');
     }
 
     return (
