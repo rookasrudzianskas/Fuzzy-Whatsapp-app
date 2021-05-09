@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./styles/SidebarChat.css";
 import {Avatar} from "@material-ui/core";
 import db from "../firebase";
+import {Link} from "react-router-dom";
 
 const SidebarChat = ({ addNewChat, id, name }) => {
     // we store the avatar here
@@ -31,15 +32,18 @@ const SidebarChat = ({ addNewChat, id, name }) => {
     // which is createChat function and AddnewChat label
     // if we do not pass the add newChat prop, it goes smooth, as It should with avatars and son on
     return !addNewChat ? (
-        // if we do not have addNewChat
-        <div className="sidebarChat">
-            {/* this is the avatar URL to generate it and show it in the icon*/}
-            <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-            <div className="sidebarChat__info">
-                <h2>{name}</h2>
-                <p>Last message....</p>
+        // this is going to send the whole room to the room id from the props
+        <Link to={`/rooms/${id}`}>
+            {/*// if we do not have addNewChat*/}
+            <div className="sidebarChat">
+                {/* this is the avatar URL to generate it and show it in the icon*/}
+                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+                <div className="sidebarChat__info">
+                    <h2>{name}</h2>
+                    <p>Last message....</p>
+                </div>
             </div>
-        </div>
+        </Link>
     ) : (
         // if we have the addNewChat prop, so this renders
         <div onClick={createChat} className="sidebarChat">

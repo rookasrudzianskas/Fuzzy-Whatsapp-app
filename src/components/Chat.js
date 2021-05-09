@@ -6,11 +6,15 @@ import AttachFile from '@material-ui/icons/AttachFile';
 import MoreVert from '@material-ui/icons/MoreVert';
 import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
+import { useParams } from "react-router-dom";
 
 const Chat = () => {
     // we store the avatar here
     const [seed, setSeed] = useState('');
     const [input, setInput] = useState('');
+    // to get everything what follows after the /rooms/sffsdfds
+    const { roomId } = useParams();
+
     // console.log(input)
 
     useEffect(() => {

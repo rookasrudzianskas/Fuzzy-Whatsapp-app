@@ -34,7 +34,7 @@ const Sidebar = () => {
        // we always detach the listener, then we finished using it, and then attach the new one, to make the performance better,
         // to not to keep the old one
        return () => {
-           unsubscribe()
+           unsubscribe();
        }
     }, []);
 
