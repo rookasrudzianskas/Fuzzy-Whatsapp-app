@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./styles/SidebarChat.css";
 import {Avatar} from "@material-ui/core";
+import db from "../firebase";
 
 const SidebarChat = ({ addNewChat, id, name }) => {
     // we store the avatar here
@@ -19,6 +20,11 @@ const SidebarChat = ({ addNewChat, id, name }) => {
         // if we have the chat name, so we do some clever stuff there
         if (roomName) {
             // do some important things here!
+            // we add it to the firebase
+            db.collection("rooms").add({
+                // add name with id, and the name is the roomNem
+                name: roomName,
+            });
         }
     };
     // so if we pass the addNewChat prop to the component we go redirected and render the second statement
