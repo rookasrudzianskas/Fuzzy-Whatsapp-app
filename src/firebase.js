@@ -1,4 +1,4 @@
-
+import firebase from "firebase";
 
 
 
@@ -12,3 +12,14 @@ const firebaseConfig = {
     appId: "1:510070055555:web:6c3c253bc4bc192c2e31b6",
     measurementId: "G-BCM7F6GSLP"
 };
+
+// we are initializing the connection betweek the app and the firebase with this line
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+// here we create db variable to get out database in our app
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+// this is authentication provider
+const provider = new firebase.auth.GoogleAuthProvider();
+
+export {auth, provider};
+export default db;
