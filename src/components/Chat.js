@@ -90,7 +90,10 @@ const Chat = () => {
                     <p className={`chat__message ${true && 'chat__receiver'}`}>
                     <span className="chat__name">{message.name}</span>
                         {message.message}
-                    <span className="chat__timestamp">3.45PM</span>
+                    <span className="chat__timestamp">
+                        {/* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*/}
+                        {new Date(message.timestamp?.toDate()).toUTCString()}
+                    </span>
                     </p>
 
                     ))}
