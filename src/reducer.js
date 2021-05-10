@@ -8,7 +8,7 @@ export const actionTypes = {
 
 const reducer = (state, action) => {
     console.log(action);
-    /// we are listentining fro the actions dispatching
+    /// we are listening fro the actions dispatching
     switch (action.type) {
         case actionTypes.SET_USER:
             return {
