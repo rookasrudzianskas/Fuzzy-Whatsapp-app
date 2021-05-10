@@ -68,13 +68,13 @@ const Chat = () => {
         e.preventDefault();
         // we add each message to the following room id as the message from input state, the name from google auth, and the timestamp
         // is the server timestamp
-        console.log("I am here")
+        // console.log("I am here")
         db.collection("rooms").doc(roomId).collection('messages').add({
             message: input,
             name: user.displayName,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
-        console.log("GOT EVERYTHING")
+        // console.log("GOT EVERYTHING")
         setInput('');
     }
 
