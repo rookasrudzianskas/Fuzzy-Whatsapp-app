@@ -7,6 +7,7 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 const Chat = () => {
     // we store the avatar here
@@ -17,7 +18,7 @@ const Chat = () => {
 
     // to keep the track of the room
     const [roomName, setRoomName] = useState('');
-
+    console.log("haha", roomName)
     // console.log(input)
 
     useEffect(() => {
@@ -29,6 +30,23 @@ const Chat = () => {
         setSeed(Math.floor(Math.random() * 5000))
     //    after that we set the seed to that number, and it gets the array of the random generated numbers
     }, []);
+
+    useEffect(() => {
+        //every time the room id changes, we run this useEffect, to get the messages for that room
+
+        if(roomId) {
+            // if there is a room id
+            // this is going to go to the collection rooms, if there iis room id, to the particular document, which is specified in use params
+            // and take all the data from it, now it is going to be just the object with room name
+            // and set the roomName to the array with the room name
+            // That is it
+            db.collection("rooms").doc(roomId).onSnapshot(snapshot => {
+                setRoomName(snapshot.data().name);
+            })
+        }
+
+    }, [roomId])
+
     // send message function
     const sendMessage = (e) => {
         e.preventDefault();
