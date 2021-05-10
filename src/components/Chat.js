@@ -18,6 +18,7 @@ const Chat = () => {
 
     // to keep the track of the room
     const [roomName, setRoomName] = useState('');
+    const [messages, setMessages] = useState('');
     // console.log("haha", roomName)
     // console.log(input)
 
@@ -43,6 +44,16 @@ const Chat = () => {
             db.collection("rooms").doc(roomId).onSnapshot(snapshot => {
                 setRoomName(snapshot.data().name);
             })
+            // this does very simple thing, if the roomId exsists, so it goes to the rooms collection
+            // to the roomID with the following id from hte url, and in that id to the collection messages
+            // orders by the timestamp, asc order
+            // and then goes and takes the snapshot of that messages, and what is in here, basically takes that object, and sets it
+            // to the SetMessages state,
+            // then it maps per all the id's (the documents) in the messages collection, and for each one, returns the object with the data from that id
+            // so the messages state fills up with the objects from the Messages colllection
+            db.collection("rooms").doc(roomId).collection("messages").orderBy("timestamp", "asc").onSnapshot(snapshot => {
+                setMessages(snapshot.docs.map(doc => doc.data()));
+            });
         }
 
     }, [roomId])
@@ -73,14 +84,16 @@ const Chat = () => {
             </div>
 
             <div className="chat__body">
-                {/* if something is true, so add the chatreceiiver class*/}
-                <p className={`chat__message ${true && 'chat__receiver'}`}>
-                    <span className="chat__name">Rookas Rudzianskas</span>
-                    Hey guys
+                {/* we map per messages array of objects, and take each message, and show it on the screen in following order and view*/}
+                {messages.map((message) => (
+                     // if something is true, so add the chatreceiiver class
+                    <p className={`chat__message ${true && 'chat__receiver'}`}>
+                    <span className="chat__name">{message.name}</span>
+                        {message.message}
                     <span className="chat__timestamp">3.45PM</span>
-                </p>
+                    </p>
 
-
+                    ))}
             </div>
 
             <div className="chat__footer">
