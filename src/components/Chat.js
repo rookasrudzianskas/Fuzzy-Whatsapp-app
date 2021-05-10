@@ -15,6 +15,9 @@ const Chat = () => {
     // to get everything what follows after the /rooms/sffsdfds
     const { roomId } = useParams();
 
+    // to keep the track of the room
+    const [roomName, setRoomName] = useState('');
+
     // console.log(input)
 
     useEffect(() => {
