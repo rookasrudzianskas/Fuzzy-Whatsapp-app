@@ -100,21 +100,21 @@ const Chat = () => {
             <div className="chat__body">
 
                 {/* /!*we map per messages array of objects, and take each message, and show it on the screen in following order and view*!/*/}
-                {messages?.map((message) => (
-                     // if something is true, so add the chatreceiiver class
-                    // if the message name is equal to the user name which is in google, so this means, that the message if from you
-                    <p className={`chat__message ${message.name === user.displayName && 'chat__receiver'}`}>
-                    <span className="chat__name">{message?.name}</span>
-                        {message?.message}
-                        {/*something here*/}
-                    <span className="chat__timestamp">
-                        {/*3423423*/}
-                        {/* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*/}
-                        {new Date(message?.timestamp?.toDate()).toUTCString()}
-                    </span>
-                    </p>
+                {/*{messages?.map((message) => (*/}
+                {/*     // if something is true, so add the chatreceiiver class*/}
+                {/*    // if the message name is equal to the user name which is in google, so this means, that the message if from you*/}
+                {/*    <p className={`chat__message ${message.name === user.displayName && 'chat__receiver'}`}>*/}
+                {/*    <span className="chat__name">{message?.name}</span>*/}
+                {/*        {message?.message}*/}
+                {/*        /!*something here*!/*/}
+                {/*    <span className="chat__timestamp">*/}
+                {/*        /!*3423423*!/*/}
+                {/*        /!* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*!/*/}
+                {/*        {new Date(message?.timestamp?.toDate()).toUTCString()}*/}
+                {/*    </span>*/}
+                {/*    </p>*/}
 
-                    ))}
+                {/*    ))}*/}
             </div>
 
             <div className="chat__footer">

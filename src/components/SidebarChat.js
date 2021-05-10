@@ -18,7 +18,7 @@ const SidebarChat = ({ addNewChat, id, name }) => {
                 setMessages(snapshot.docs.map((doc) => doc.data()))
             ))
         }
-    })
+    }, [id])
 
     useEffect(() => {
         // just generate the random number and store in the state
