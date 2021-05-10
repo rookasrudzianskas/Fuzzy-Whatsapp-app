@@ -29,7 +29,7 @@ const Chat = () => {
         // the number between 0 and 5000
         setSeed(Math.floor(Math.random() * 5000))
     //    after that we set the seed to that number, and it gets the array of the random generated numbers
-    }, []);
+    }, [roomId]);
 
     useEffect(() => {
         //every time the room id changes, we run this useEffect, to get the messages for that room
