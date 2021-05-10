@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 import db from "../firebase";
 import {useStateValue} from "../StateProvider";
 import firebase from "firebase";
-import {logDOM} from "@testing-library/react";
 
 const Chat = () => {
     // we store the avatar here
@@ -22,7 +21,7 @@ const Chat = () => {
     // to keep the track of the room
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState('');
-    console.log(messages)
+    // console.log(messages)
     const [{user}, dispatch] = useStateValue();
     // console.log("haha", roomName)
     // console.log(input)
@@ -85,7 +84,9 @@ const Chat = () => {
 
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
-                    <p>Last seen at ....................</p>
+                    {/* we find the last message in messages array*/}
+                    {/* is the timestamp from the last message great formed*/}
+                    <p>last seen{" "} {new Date(messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()}</p>
                 </div>
 
                 <div className="chat__headerRight">
@@ -99,16 +100,17 @@ const Chat = () => {
             <div className="chat__body">
 
                 {/* /!*we map per messages array of objects, and take each message, and show it on the screen in following order and view*!/*/}
-                {messages.map((message) => (
+                {messages?.map((message) => (
                      // if something is true, so add the chatreceiiver class
-                    <p className={`chat__message ${true && 'chat__receiver'}`}>
-                    <span className="chat__name">{message.name}</span>
-                        {message.message}
+                    // if the message name is equal to the user name which is in google, so this means, that the message if from you
+                    <p className={`chat__message ${message.name === user.displayName && 'chat__receiver'}`}>
+                    <span className="chat__name">{message?.name}</span>
+                        {message?.message}
                         {/*something here*/}
                     <span className="chat__timestamp">
                         {/*3423423*/}
                         {/* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*/}
-                        {new Date(message.timestamp?.toDate()).toUTCString()}
+                        {new Date(message?.timestamp?.toDate()).toUTCString()}
                     </span>
                     </p>
 
