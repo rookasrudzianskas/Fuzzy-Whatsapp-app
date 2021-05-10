@@ -7,6 +7,18 @@ import {Link} from "react-router-dom";
 const SidebarChat = ({ addNewChat, id, name }) => {
     // we store the avatar here
     const [seed, setSeed] = useState('');
+    const [messages, setMessages] = useState('');
+
+    useEffect(() => {
+        // if there is an id, so we go further
+        if(id) {
+            // we go to the rooms, and by the id, to the collection messages
+            db.collection("rooms").doc(id).collection("messages").orderBy("timestamp", "desc").onSnapshot(snapshot => (
+                // we and take the messages, by the needed id, and store in the messages array of object
+                setMessages(snapshot.docs.map((doc) => doc.data()))
+            ))
+        }
+    })
 
     useEffect(() => {
         // just generate the random number and store in the state
@@ -40,7 +52,8 @@ const SidebarChat = ({ addNewChat, id, name }) => {
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
                 <div className="sidebarChat__info">
                     <h2>{name}</h2>
-                    <p>Last message....</p>
+                    {/* this is the most recent one*/}
+                    <p>{messages[0]?.message}</p>
                 </div>
             </div>
         </Link>
