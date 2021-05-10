@@ -1,11 +1,15 @@
 import React from 'react';
 import "./styles/Login.css";
 import {Button} from "@material-ui/core";
+import {auth, provider} from "../firebase";
 
 const Login = () => {
 
     const signIn = () => {
     //     sign in function
+        auth.signInWithPopup(provider).then(result => {
+            console.log(result);
+        }).catch(error => alert(error.message));
     };
 
     return (
