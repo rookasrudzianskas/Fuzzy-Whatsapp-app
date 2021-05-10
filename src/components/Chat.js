@@ -8,6 +8,9 @@ import InsertEmoticon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { useParams } from "react-router-dom";
 import db from "../firebase";
+import {useStateValue} from "../StateProvider";
+import firebase from "firebase";
+import {logDOM} from "@testing-library/react";
 
 const Chat = () => {
     // we store the avatar here
@@ -19,9 +22,10 @@ const Chat = () => {
     // to keep the track of the room
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState('');
+    const [{user}, dispatch] = useStateValue();
     // console.log("haha", roomName)
     // console.log(input)
-
+    console.log('haha', messages);
     useEffect(() => {
 
         // just generate the random number and store in the state
@@ -61,7 +65,15 @@ const Chat = () => {
     // send message function
     const sendMessage = (e) => {
         e.preventDefault();
-        console.log('You typed', input)
+        // we add each message to the following room id as the message from input state, the name from google auth, and the timestamp
+        // is the server timestamp
+        console.log("I am here")
+        db.collection("rooms").doc(roomId).collection('messages').add({
+            message: input,
+            name: user.displayName,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        console.log("GOT EVERYTHING")
         setInput('');
     }
 
@@ -84,19 +96,22 @@ const Chat = () => {
             </div>
 
             <div className="chat__body">
-                {/* we map per messages array of objects, and take each message, and show it on the screen in following order and view*/}
-                {messages.map((message) => (
-                     // if something is true, so add the chatreceiiver class
-                    <p className={`chat__message ${true && 'chat__receiver'}`}>
-                    <span className="chat__name">{message.name}</span>
-                        {message.message}
-                    <span className="chat__timestamp">
-                        {/* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*/}
-                        {new Date(message.timestamp?.toDate()).toUTCString()}
-                    </span>
-                    </p>
 
-                    ))}
+                {/* /!*we map per messages array of objects, and take each message, and show it on the screen in following order and view*!/*/}
+                {/*{messages.map((message) => (*/}
+                {/*     // if something is true, so add the chatreceiiver class*/}
+                {/*    <p className={`chat__message ${true && 'chat__receiver'}`}>*/}
+                {/*    <span className="chat__name">{message.name}</span>*/}
+                {/*        {message.message}*/}
+                {/*        /!*something here*!/*/}
+                {/*    <span className="chat__timestamp">*/}
+                {/*        /!*3423423*!/*/}
+                {/*        /!* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*!/*/}
+                {/*        {new Date(message.timestamp?.toDate()).toUTCString()}*/}
+                {/*    </span>*/}
+                {/*    </p>*/}
+
+                {/*    ))}*/}
             </div>
 
             <div className="chat__footer">
