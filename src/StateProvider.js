@@ -8,4 +8,5 @@ export const StateProvider = ({ reducer, initialState, children }) => (
     </StateContext.Provider>
 );
 
+// let us to pull the info from datalayer
 export const useStateValue = () => useContext(StateContext);
