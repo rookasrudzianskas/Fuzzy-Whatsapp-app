@@ -17,7 +17,7 @@ const reducer = (state, action) => {
                 // and updated user from the payload we have dispatched
                 user: action.user
             };
-
+        //d default case, if the action type is not in the case above
         default:
             return state
     }
