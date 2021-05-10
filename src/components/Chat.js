@@ -22,10 +22,11 @@ const Chat = () => {
     // to keep the track of the room
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState('');
+    console.log(messages)
     const [{user}, dispatch] = useStateValue();
     // console.log("haha", roomName)
     // console.log(input)
-    console.log('haha', messages);
+    // console.log('haha', messages);
     useEffect(() => {
 
         // just generate the random number and store in the state
@@ -98,20 +99,20 @@ const Chat = () => {
             <div className="chat__body">
 
                 {/* /!*we map per messages array of objects, and take each message, and show it on the screen in following order and view*!/*/}
-                {/*{messages.map((message) => (*/}
-                {/*     // if something is true, so add the chatreceiiver class*/}
-                {/*    <p className={`chat__message ${true && 'chat__receiver'}`}>*/}
-                {/*    <span className="chat__name">{message.name}</span>*/}
-                {/*        {message.message}*/}
-                {/*        /!*something here*!/*/}
-                {/*    <span className="chat__timestamp">*/}
-                {/*        /!*3423423*!/*/}
-                {/*        /!* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*!/*/}
-                {/*        {new Date(message.timestamp?.toDate()).toUTCString()}*/}
-                {/*    </span>*/}
-                {/*    </p>*/}
+                {messages.map((message) => (
+                     // if something is true, so add the chatreceiiver class
+                    <p className={`chat__message ${true && 'chat__receiver'}`}>
+                    <span className="chat__name">{message.name}</span>
+                        {message.message}
+                        {/*something here*/}
+                    <span className="chat__timestamp">
+                        {/*3423423*/}
+                        {/* this forms a new date, from the each message key the timestamp, and formats it to thhe normal date*/}
+                        {new Date(message.timestamp?.toDate()).toUTCString()}
+                    </span>
+                    </p>
 
-                {/*    ))}*/}
+                    ))}
             </div>
 
             <div className="chat__footer">
